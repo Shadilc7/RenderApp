@@ -1,2 +1,224 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% content_for :title, "Shadil C | Ruby on Rails Developer" %>
+
+<header class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav" data-controller="nav">
+	<div class="container">
+		<a class="navbar-brand fw-bold" href="#hero">SC</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<nav id="navbarNav" class="collapse navbar-collapse">
+			<ul class="navbar-nav ms-auto gap-lg-3">
+				<li class="nav-item"><a class="nav-link" href="#projects" data-action="click->nav#scroll">Projects</a></li>
+				<li class="nav-item"><a class="nav-link" href="#skills" data-action="click->nav#scroll">Skills</a></li>
+				<li class="nav-item"><a class="nav-link" href="#experience" data-action="click->nav#scroll">Experience</a></li>
+				<li class="nav-item"><a class="nav-link" href="#contact" data-action="click->nav#scroll">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="progress-indicator" data-nav-target="progress"></div>
+	<div class="gradient-bar"></div>
+	<svg class="noise" xmlns="http://www.w3.org/2000/svg">
+		<filter id="n">
+			<feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+			<feColorMatrix type="saturate" values="0"/>
+			<feBlend mode="overlay"/>
+		</filter>
+	</svg>
+	<div class="blur" aria-hidden="true"></div>
+</header>
+
+<main>
+	<!-- Hero -->
+	<section id="hero" class="hero d-flex align-items-center min-vh-100 position-relative overflow-hidden">
+		<div class="container position-relative">
+			<div class="row align-items-center g-5">
+				<div class="col-12 col-lg-7" data-controller="reveal" data-reveal-threshold-value="0.2">
+					<h1 class="display-4 fw-bold lh-1 mb-3">
+						<span class="text-gradient">Ruby on Rails</span> Developer
+					</h1>
+					<p class="lead text-secondary mb-4">
+						I craft fast, secure, and delightful web apps with Rails, Hotwire, and modern tooling. I love turning complex ideas into polished, scalable products.
+					</p>
+					<div class="d-flex gap-3">
+						<a href="#projects" class="btn btn-primary btn-lg px-4" data-action="click->nav#scroll">View Projects</a>
+						<a href="#contact" class="btn btn-outline-light btn-lg px-4" data-action="click->nav#scroll">Get in touch</a>
+					</div>
+					<div class="mt-4 text-secondary small">Available for freelance and full-time roles</div>
+				</div>
+				<div class="col-12 col-lg-5 position-relative" data-controller="tilt" data-tilt-max-value="10" data-tilt-speed-value="0.15">
+					<div class="hero-card card shadow-lg border-0 bg-dark-subtle">
+						<div class="card-body p-4">
+							<div class="d-flex align-items-center gap-3 mb-3">
+								<div class="avatar">SC</div>
+								<div>
+									<div class="fw-semibold">Shadil C</div>
+									<div class="text-secondary small">Rails, Hotwire, Postgres</div>
+								</div>
+							</div>
+							<ul class="list-unstyled mb-0 small text-secondary">
+								<li class="mb-2"><i class="bi bi-lightning-charge text-warning me-2"></i>Turbo-powered UI</li>
+								<li class="mb-2"><i class="bi bi-shield-check text-success me-2"></i>Secure auth & policies</li>
+								<li class="mb-2"><i class="bi bi-graph-up text-info me-2"></i>Scalable architectures</li>
+							</ul>
+						</div>
+					</div>
+					<div class="blob blob-1"></div>
+					<div class="blob blob-2"></div>
+				</div>
+			</div>
+		</div>
+		<div class="hero-bg-gradient"></div>
+	</section>
+
+	<!-- Projects -->
+	<section id="projects" class="section-pad bg-body-tertiary position-relative">
+		<div class="container">
+			<div class="row mb-4" data-controller="reveal"><div class="col-lg-8">
+				<h2 class="fw-bold">Featured Projects</h2>
+				<p class="text-secondary">A selection of apps demonstrating performance, DX, and clean UX.</p>
+			</div></div>
+			<div class="row g-4">
+				<% [["KoiCMS", "A Rails + Hotwire content platform with inline editing and PWA.", ["Rails","Hotwire","Stimulus","PWA"], "bi-journal-richtext"],
+						["PulseBoard", "Realtime dashboards streamed with Turbo and ActionCable.", ["Rails","Turbo","Cable","Chart.js"], "bi-activity"],
+						["ShipKit", "CI-friendly deployment tooling with Kamal & Render.", ["Rails","Kamal","Render","Docker"], "bi-box-seam"]].each do |name,desc,tags,icon| %>
+					<div class="col-12 col-md-6 col-lg-4" data-controller="reveal">
+						<article class="project card project-card h-100 border-0 shadow-sm">
+							<div class="card-body">
+								<div class="d-flex align-items-center gap-2 mb-2">
+									<i class="bi <%= icon %> fs-4 text-primary"></i>
+									<h3 class="h5 mb-0"><%= name %></h3>
+								</div>
+								<p class="text-secondary mb-3"><%= desc %></p>
+								<div class="d-flex flex-wrap gap-2">
+									<% tags.each do |t| %>
+										<span class="badge bg-dark-subtle text-dark"><%= t %></span>
+									<% end %>
+								</div>
+							</div>
+						</article>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="section-deco"></div>
+	</section>
+
+	<!-- Skills -->
+	<section id="skills" class="section-pad">
+		<div class="container">
+			<div class="row mb-4" data-controller="reveal"><div class="col-lg-8">
+				<h2 class="fw-bold">Core Skills</h2>
+				<p class="text-secondary">Rails-first stack with a sprinkle of JS where it shines.</p>
+			</div></div>
+			<div class="row g-4">
+				<% [["Ruby on Rails","bi-gem","10+ apps"], ["PostgreSQL","bi-database","tuned indexes"], ["Hotwire / Stimulus","bi-bolt","snappy UX"], ["RSpec","bi-beaker","confident releases"], ["Docker & Kamal","bi-box","zero-downtime"], ["CI/CD","bi-gear","from PR to prod"]].each do |title, icon, note| %>
+					<div class="col-6 col-md-4 col-lg-2" data-controller="reveal">
+						<div class="skill text-center p-3 rounded-3 shadow-sm h-100 bg-body-tertiary">
+							<i class="bi <%= icon %> fs-1 text-gradient"></i>
+							<div class="mt-2 fw-semibold"><%= title %></div>
+							<div class="text-secondary small"><%= note %></div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</section>
+
+	<!-- Experience -->
+	<section id="experience" class="section-pad bg-body-tertiary">
+		<div class="container">
+			<div class="row mb-4" data-controller="reveal"><div class="col-lg-8">
+				<h2 class="fw-bold">Experience</h2>
+				<p class="text-secondary">Recent roles and highlights.</p>
+			</div></div>
+			<div class="timeline">
+				<% [
+					{ role: "Senior Rails Developer", org: "Acme Co.", time: "2022–2025", pts: ["Led migration to Hotwire", "Cut p95 latency by 38%", "Scaled to 1M MAU"] },
+					{ role: "Full‑stack Engineer", org: "Orbit Labs", time: "2020–2022", pts: ["Shipped 12 features/quarter", "Own CI/CD with Kamal", "Mentored 3 juniors"] }
+				].each do |j| %>
+					<div class="timeline-item" data-controller="reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content card border-0 shadow-sm">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-start">
+									<div>
+										<h3 class="h5 mb-1"><%= j[:role] %> · <span class="text-secondary"><%= j[:org] %></span></h3>
+										<ul class="mb-0 text-secondary small">
+											<% j[:pts].each do |p| %>
+												<li class="mb-1"><%= p %></li>
+											<% end %>
+										</ul>
+									</div>
+									<span class="badge bg-primary-subtle text-primary"><%= j[:time] %></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="section-pad">
+		<div class="container">
+			<div class="row mb-4" data-controller="reveal"><div class="col-lg-8">
+				<h2 class="fw-bold">Let’s build something</h2>
+				<p class="text-secondary">Tell me about your idea—I'll reply within 24h.</p>
+			</div></div>
+			<div class="row g-4 align-items-stretch">
+				<div class="col-12 col-lg-7" data-controller="reveal">
+					<form class="card border-0 shadow-sm bg-body-tertiary">
+						<div class="card-body p-4">
+							<div class="row g-3">
+								<div class="col-md-6">
+									<label class="form-label">Name</label>
+									<input type="text" class="form-control" placeholder="Your name">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Email</label>
+									<input type="email" class="form-control" placeholder="you@example.com">
+								</div>
+								<div class="col-12">
+									<label class="form-label">Message</label>
+									<textarea class="form-control" rows="4" placeholder="Project scope, timeline, budget…"></textarea>
+								</div>
+							</div>
+							<div class="d-flex justify-content-between align-items-center mt-4">
+								<div class="text-secondary small">No spam ever. I’ll only use your email to reply.</div>
+								<button type="button" class="btn btn-primary btn-lg">Send</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-12 col-lg-5" data-controller="reveal">
+					<div class="contact-card card border-0 shadow-sm h-100">
+						<div class="card-body p-4 d-flex flex-column gap-3">
+							<div class="d-flex align-items-center gap-3">
+								<i class="bi bi-envelope-open text-primary fs-4"></i>
+								<a class="link-underline link-underline-opacity-0" href="mailto:you@example.com">you@example.com</a>
+							</div>
+							<div class="d-flex align-items-center gap-3">
+								<i class="bi bi-github text-primary fs-4"></i>
+								<a class="link-underline link-underline-opacity-0" target="_blank" rel="noopener" href="https://github.com/yourhandle">github.com/yourhandle</a>
+							</div>
+							<div class="d-flex align-items-center gap-3">
+								<i class="bi bi-linkedin text-primary fs-4"></i>
+								<a class="link-underline link-underline-opacity-0" target="_blank" rel="noopener" href="https://linkedin.com/in/yourhandle">linkedin.com/in/yourhandle</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="py-5 border-top border-dark-subtle bg-body-tertiary">
+	<div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+		<div class="text-secondary">© <%= Time.current.year %> Shadil C</div>
+		<div class="d-flex gap-3">
+			<a class="text-secondary" href="#hero" data-action="click->nav#scroll">Back to top</a>
+		</div>
+	</div>
+</footer>

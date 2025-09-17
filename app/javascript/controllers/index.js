@@ -6,3 +6,15 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import RevealController from "./reveal_controller"
+application.register("reveal", RevealController)
+
+import TiltController from "./tilt_controller"
+application.register("tilt", TiltController)
+
+import TypewriterController from "./typewriter_controller"
+application.register("typewriter", TypewriterController)
+
+import NavController from "./nav_controller"
+application.register("nav", NavController)
